@@ -136,6 +136,10 @@ var B = false;
   * + hàm ko có tham số, ko có giá trị trả về
   * + hàm có tham sô , ko có giá trị trả về
   * + hàm ko có tham số, ko có giá trị trả về 
+  * -hoisting: là cơ chế đẩy 1 biếm được khai báo lên trên cùng scope chứa nó => có thể truy cập được biến chưa khai báo
+  * +đối với biến : hoisting chỉ xảy ra với từ khóa var
+  * +đối với func : hoisting chỉ xảy ra với declaration
+  * -Ternary operator (toán tử 3 ngôi)
   */
  function sayHello(){
      console.log('kinhs chaof');
@@ -155,3 +159,57 @@ sayHelloToSomone('phat');
 // calculateGPA(7, 9, 10);
 var _gpa = calculateGPA(7, 9, 10);
 console.log(_gpa);
+//expression funct,ko thể gọi trc func,khi gọi lên thì nó bị undefied
+var _sayHello = function(name){
+    console.log('hello' + name);
+
+}
+_sayHello('tay');
+_sayHello('tay');
+// Hoisting
+ var demoHoisting;//chỉ có vả nới có hoisting 
+ console.log('demoHoisting');
+ var demoHoisting = 'hoisting';
+
+// console.log(hoistingConst );=>toang
+const hoistingConst ='hoisting'
+console.log(hoistingConst );
+
+
+
+
+// Ternary operator (toán tử 3 ngôi)
+1===2 ? console.log("điều kiện đúng"): console.log("điều kiện sai");
+
+var res = 1 === 2 ? true :false ;
+console.log(res);
+
+/**
+ * BT1: tính điểm TB và xeeps loại sinh viên
+ */
+var tinhDiemTB = function(dToan,dLy,dHoa){
+    //var dtb=(dToan + dLy + dHoa)/3;//scope,dtb ;là biến local(ko thể gọi từ bên ngoài)
+    return (dToan + dLy + dHoa)/3;
+}
+var xeploai = function(){
+    var dtb = tinhDiemTB(5,8,10);
+    var xeploai = ''//chuỗi
+    if (dtb >= 9 && dtb <= 10){
+        // console.log('hoc');
+        xeploai = 'Xuất sắc '
+    }else if (dtb>=8 && dtb < 9){
+        xeploai='giỏi'
+    }else if (dtb>=7 && dtb < 8){
+        xeploai=' Khá'
+    }else if (dtb>=6 && dtb < 7){
+        xeploai='TB khá'
+    }else if(dtb>=5 && dtb < 6){
+        xeploai = 'Trung bình'
+    }else{ //chỉ có else vì hết điều kiện
+        xeploai='Yếu'
+    }
+    console.log('xếp loại' + xeploai);
+}
+xeploai();
+tinhDiemTB(5,8,9);
+console.log(tinhDiemTB);
